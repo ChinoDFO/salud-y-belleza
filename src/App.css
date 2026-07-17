@@ -3,17 +3,14 @@
 /*----------------Clases----------------*/
 .App {
   text-align: center;
-
+  /* Espaciado interno para que el contenido no pegue arriba ni abajo de la pantalla */
 }
 
-.App-logo {
+/* Contenedor del logo para controlar su posición en la pantalla */
+.Logo-container {
   display: block;
-  /* Orden de márgenes: Arriba (0), Lados (auto para centrar), Abajo (350px) */
-  margin: 150px auto 350px auto; 
-  
-  width: auto;
-  height: auto;
-  pointer-events: none;
+  /* 80px arriba para separarlo del inicio, 300px abajo para invitar a scrollear */
+  margin: 0px auto 300px auto; 
   opacity: 0;
   transform: scale(.8);
   animation: aparecer 2s ease forwards;
@@ -21,48 +18,45 @@
 
 .App-logo2 {
   display: block;
-  /* Orden de márgenes: Arriba (0), Lados (auto para centrar), Abajo (350px) */
-  margin: 150px auto 350px auto; 
-  
-  width: auto;
+  margin: 0 auto;
+  max-width: 280px; /* Limitamos el ancho para que no se deforme */
   height: auto;
-  align-self: center;
-  height: 40vmin;
   pointer-events: none;
   animation: pulse 1.5s infinite alternate;
+}
+
+.hero {
+  background-image: url("./assets/fondo12.png");
+  text-align: center;
+  height: 550px;
+  width: auto;
+  background-attachment: fixed; /* <--- ESTO mantiene el fondo congelado */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 150px;
+  align-items: center;
 }
 
 
 .Info {
   font-family: "Great Vibes", cursive;
-  font-size: 50px;
-  color: #fcfcfc;
+  font-size: 45px;
+  color: #000000;
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto 250px auto; /* 250px de separación abajo para que se note el scroll entre textos */
+  line-height: 1.4;
 }
 
-/*.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #191919;
-  gap: 40px
-}*/
+/* Un margen inferior extra al último elemento para que el usuario pueda scrollear libremente al final */
+.Info-last {
+  margin-bottom: 150px;
+}
 
 .App-link {
   color: #2d0d36;
 }
-
-/*.hero{
-  
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-}*/
 
 /*----------------medias----------------*/
 @media (prefers-reduced-motion: no-preference) {
@@ -77,7 +71,6 @@
         opacity:0;
         transform:scale(.7);
     }
-
     to{
         opacity:1;
         transform:scale(1);
@@ -88,8 +81,7 @@
   from {
     transform: scale(1);
   }
-
   to {
-    transform: scale(1.3);
+    transform: scale(1.1); /* Reducido ligeramente de 1.3 para que el pulso sea más sutil y elegante */
   }
 }
