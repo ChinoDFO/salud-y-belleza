@@ -15,3 +15,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*----------------Navbar----------------*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 98%;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  background-image: url("./logo_salud_y_belleza_blanco.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 50px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.navbar .nav-links li a:hover {
+  text-decoration: underline;
+}
