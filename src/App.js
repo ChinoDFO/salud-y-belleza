@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import logo_Salud_y_Belleza_Blanco from './logo_salud_y_belleza_blanco.png';
+//import { Fondo } from './components/Fondo';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <section className="App-logo">
+          <img src={logo_Salud_y_Belleza_Blanco} className="App-logo2" alt="logo" />
+        </section>
+        <section className="Info">
+          <p> 
+            Bienvenido a Salud y Belleza, la mejor tienda de productos de belleza 
+            y cuidado personal.  
+          </p>
+        </section>
+        <section className="Info">
+          <p>
+            En nuestra tienda encontrarás una amplia variedad de productos de alta calidad para el cuidado de tu piel, cabello y cuerpo.
+          </p>
+        </section>
+      
     </div>
   );
 }

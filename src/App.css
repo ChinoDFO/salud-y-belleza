@@ -1,38 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+/*----------------Clases----------------*/
 .App {
   text-align: center;
+
 }
 
 .App-logo {
+  display: block;
+  /* Orden de márgenes: Arriba (0), Lados (auto para centrar), Abajo (350px) */
+  margin: 150px auto 350px auto; 
+  
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(.8);
+  animation: aparecer 2s ease forwards;
+}
+
+.App-logo2 {
+  display: block;
+  /* Orden de márgenes: Arriba (0), Lados (auto para centrar), Abajo (350px) */
+  margin: 150px auto 350px auto; 
+  
+  width: auto;
+  height: auto;
+  align-self: center;
   height: 40vmin;
   pointer-events: none;
+  animation: pulse 1.5s infinite alternate;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.Info {
+  font-family: "Great Vibes", cursive;
+  font-size: 50px;
+  color: #fcfcfc;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
+/*.App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
+  color: #191919;
+  gap: 40px
+}*/
 
 .App-link {
-  color: #61dafb;
+  color: #2d0d36;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*.hero{
+  
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+}*/
+
+/*----------------medias----------------*/
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo2 {
+    animation: pulse 1.5s ease-in-out infinite linear;
   }
+}
+
+/*----------------KeyFrames----------------*/
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
   to {
-    transform: rotate(360deg);
+    transform: scale(1.3);
   }
 }
