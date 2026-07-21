@@ -57,13 +57,13 @@ code {
 
 
 /*Hacer invisible la navbar*/
-.navbar.hidden { 
-  animation: aparecer 0.5s forwards; /* Animación para que aparezca suavemente */
-
+.navbar.visible { 
+  animation: aparecer 0.8s forwards; /* Animación para que aparezca suavemente */
+}
+.navbar.hidden {
   transform: translateY(-100%);
   opacity: 0;
 }
-
 
 
 /*----------------Media----------------*/
@@ -86,7 +86,7 @@ code {
 @keyframes aparecer{
     from{
         opacity:0;
-        transform:scale(.7);
+        transform:scale(.3);
     }
     to{
         opacity:1;

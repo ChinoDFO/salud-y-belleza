@@ -3,14 +3,26 @@ import React, { useState, useEffect } from 'react';
 import '../App.css'; 
 
 export const Navbar = () => {
-  const [hidden, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo(0, 0); // Asegura que la página se cargue en la parte superior
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Aparece después de scroll de 200px
-      if (window.scrollY > 700) {
+      // Aparece después de scroll de 700px
+      if (window.scrollY < 200) {
+        setHidden(true);    
         setVisible(false);
+        
       } else {
+        setHidden(false);
         setVisible(true);
       }
     };
@@ -20,7 +32,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar ${hidden ? 'hidden' : ''}`}>
+    <nav className={`navbar ${visible ? 'visible' : 'hidden'}`}>
       <div className="logo">
         {/* Aquí puedes poner un minilogo si quieres */}
         
