@@ -1,9 +1,11 @@
 import './App.css';
+import { Navbar } from './components/Navbar';
 import logo_Salud_y_Belleza_Blanco from './logo_salud_y_belleza_blanco.png';
 
 function App() {
   return (
     <div className="hero">
+      <Navbar />
         {/* Usamos una sola clase contenedora para el espaciado del Logo */}
           <section> 
             <div className="Logo-container">
