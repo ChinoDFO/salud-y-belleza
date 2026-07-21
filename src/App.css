@@ -29,6 +29,9 @@
   background-image: url("./assets/fondo12.png");
   text-align: center;
   height: 550px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: auto;
   background-attachment: fixed; /* <--- ESTO mantiene el fondo congelado */
   display: flex;
@@ -40,12 +43,12 @@
 
 
 .Info {
-  font-family: "Great Vibes", cursive;
-  font-size: 45px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 20px;
   color: #000000;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 250px auto; /* 250px de separación abajo para que se note el scroll entre textos */
+  text-align: left;
+  max-width: 900px;
+  margin: 500px auto 250px auto; /* 250px de separación abajo para que se note el scroll entre textos */
   line-height: 1.4;
 }
 
