@@ -24,13 +24,16 @@ code {
   display: flex;
   align-items: center;
   background-color: #171616;
-  padding: 10px 20px;
+  padding: 20px 20px;
   position: fixed;
   top: 0;
   width: 100%;
-  opacity: 0; /* Inicialmente invisible */
-  transform: scale(0.3); /* Inicialmente reducido */
-  pointer-events: none; /* Evita que se pueda interactuar con la barra de navegación mientras está oculta */
+  opacity: 0;
+  /* Inicialmente invisible */
+  transform: scale(0.3);
+  /* Inicialmente reducido */
+  pointer-events: none;
+  /* Evita que se pueda interactuar con la barra de navegación mientras está oculta */
 }
 
 .navbar .logo {
@@ -38,7 +41,7 @@ code {
   background-repeat: no-repeat;
   width: 100px;
   height: 50px;
-  margin-left: 30px;
+  margin-left: 15px;
   animation: pulse 1.5s infinite alternate;
 }
 
@@ -61,25 +64,30 @@ code {
 }
 
 /*Hacer visible e invisible  la navbar*/
-.navbar.visible{ 
-  animation: aparecer 0.8s forwards; /* Animación para que aparezca suavemente */
-  pointer-events: auto; /* Permite la interacción con la barra de navegación cuando es visible */
+.navbar.visible {
+  animation: aparecer 0.8s forwards;
+  /* Animación para que aparezca suavemente */
+  pointer-events: auto;
+  /* Permite la interacción con la barra de navegación cuando es visible */
 }
 
 .navbar.hidding {
-  animation: desaparecer 0.8s forwards; /* Animación para que desaparezca suavemente */
-  pointer-events: none; /* Evita la interacción con la barra de navegación mientras está desapareciendo */
+  animation: desaparecer 0.8s forwards;
+  /* Animación para que desaparezca suavemente */
+  pointer-events: none;
+  /* Evita la interacción con la barra de navegación mientras está desapareciendo */
 }
 
 .navbar.initial {
-  display: none; /* Oculta completamente la barra de navegación cuando está en estado inicial */
+  display: none;
+  /* Oculta completamente la barra de navegación cuando está en estado inicial */
 }
 
 /*----------------Media----------------*/
 @media (prefers-reduced-motion: no-preference) {
   .navbar .logo {
     animation: pulse 1.5s ease-in-out infinite linear;
-}
+  }
 }
 
 /*----------------KeyFrame Section----------------*/
@@ -87,29 +95,33 @@ code {
   from {
     transform: scale(1);
   }
+
   to {
-    transform: scale(1.1); /* Reducido ligeramente de 1.1 para que el pulso sea más sutil y elegante */
+    transform: scale(1.1);
+    /* Reducido ligeramente de 1.1 para que el pulso sea más sutil y elegante */
   }
 }
 
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:scale(.3);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-@keyframes desaparecer{
-    from{
-        opacity:1;
-        transform:scale(1);
-    }
-    to{
-        opacity:0;
-        transform:scale(.3);
-    }
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(.3);
+  }
 }

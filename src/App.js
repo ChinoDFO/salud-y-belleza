@@ -2,14 +2,15 @@ import './App.css';
 import { Navbar } from './components/Navbar';
 import logo_Salud_y_Belleza_Blanco from './logo_salud_y_belleza_blanco.png';
 import { Info } from './components/Info';
+import { Gallery } from './components/Gallery';
 
 function App() {
   return (
     <div className="App">
-      <div className="hero">
+      <div className="hero" id="top">
         {/* Usamos una sola clase contenedora para el espaciado del Logo */}
         <section>
-          <div className="Logo-container" id="top">
+          <div className="Logo-container" >
             <img src={logo_Salud_y_Belleza_Blanco} className="App-logo2" alt="logo" />
             <div className="eslogan">
               <p>
@@ -21,13 +22,13 @@ function App() {
       </div>
       {/* Primera sección de texto */}
       <section className="Info" id="Sobre-Nosotros">
-        <Info delay={0.3}>
+        <Info direction='right' delay={0.1}>
           <div className="Box">
             <h1 className="titulos-cajas"> ✨¿QUIÉNES SOMOS?✨ </h1>
             <div className="linea"> </div>
             <p>
               <br></br>
-              En "Salud y Belleza" nos dedicamos a brindar atención personalizada enfocada en el bienestar, la salud y el cuidado personal.
+              En "Salud & Belleza" nos dedicamos a brindar atención personalizada enfocada en el bienestar, la salud y el cuidado personal.
               Somos un pequeño conjunto de locales conformado por dos especialistas comprometidas con ofrecer servicios de calidad,
               combinando experiencia, profesionalismo y un trato cercano para que cada visita sea una experiencia cómoda y satisfactoria.
               <br></br>
@@ -41,18 +42,21 @@ function App() {
             </p>
           </div>
         </Info>
-        {/* Segunda sección de texto con margen extra para permitir scroll */}
-        <section className="titulos" id="Servicios">
-          <Info delay={0.3}>
-            <h2>
-              NUESTROS SERVICIOS
-            </h2>
-            <p className="subtitulos">
-              Elige cualquiera de nuestros servicios para agendar tu proxima cita
-            </p>
-            <div className="sublinea"> </div>
-          </Info>
-        </section>
+      </section>
+      {/* Segunda sección de texto con margen extra para permitir scroll */}
+      <section className="titulos" id="Instalaciones">
+        <Info direction='right' delay={0.1}>
+          NUESTRAS INSTALACIONES
+          <p className="subtitulos">
+            Contamos con un equipamiento completo y profesional para llevar a cabo nuestros servicios
+          </p>
+          <div className="sublinea"> </div>
+        </Info>
+      </section>
+      <section>
+        <Info direction='up' delay={0.1}>
+          <Gallery />
+        </Info>
       </section>
       <Navbar />
     </div >
