@@ -1,10 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #d1d1d1;
-  text-align: center;
-  align-items: center;
-  
+  background-color: #faf9f7;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -36,6 +38,7 @@ code {
   background-repeat: no-repeat;
   width: 100px;
   height: 50px;
+  margin-left: 30px;
   animation: pulse 1.5s infinite alternate;
 }
 
@@ -58,7 +61,7 @@ code {
 }
 
 /*Hacer visible e invisible  la navbar*/
-.navbar.visible { 
+.navbar.visible{ 
   animation: aparecer 0.8s forwards; /* Animación para que aparezca suavemente */
   pointer-events: auto; /* Permite la interacción con la barra de navegación cuando es visible */
 }

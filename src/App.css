@@ -1,29 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500&display=swap');
+
 
 /*----------------Clases----------------*/
 .App {
   text-align: center;
+  border-radius: 5%;
   /* Espaciado interno para que el contenido no pegue arriba ni abajo de la pantalla */
 }
+
+/*----------------Clases Logo----------------*/
 
 /* Contenedor del logo para controlar su posición en la pantalla */
 .Logo-container {
   display: block;
   /* 80px arriba para separarlo del inicio, 300px abajo para invitar a scrollear */
-  margin: 0px auto 300px auto; 
+  margin: 0px auto 300px auto;
   opacity: 0;
   transform: scale(.8);
   animation: aparecer 2s ease forwards;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Controla el tamaño de la imagen del logo */
+.logo-img {
+  height: 50px; /* Ajusta este valor (entre 30px y 50px suele ser lo ideal) */
+  width: auto;  /* Mantiene la proporción original de la imagen sin deformarla */
+  object-fit: contain;
+}
+
 .App-logo2 {
   display: block;
   margin: 0 auto;
-  max-width: 280px; /* Limitamos el ancho para que no se deforme */
+  max-width: 280px;
+  /* Limitamos el ancho para que no se deforme */
   height: auto;
   pointer-events: none;
   animation: pulse 1.5s infinite alternate;
 }
+
+/*----------------Parallax y parte de body----------------*/
 
 .hero {
   background-image: url("./assets/fondo12.png");
@@ -33,7 +54,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: auto;
-  background-attachment: fixed; /* <--- ESTO mantiene el fondo congelado */
+  background-attachment: fixed;
+  /* <--- ESTO mantiene el fondo congelado */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -42,24 +64,93 @@
 }
 
 
-.Info {
-  font-family: "Segoe UI", sans-serif;
-  font-size: 20px;
+/*----------------Lineas----------------*/
+.linea::after {
+  content: "";
+  display: block;
+  width: 1000px;
+  height: 3px;
+  margin-top: 15px;
+  background: #450909;
+}
+
+.sublinea::after{
+  content: "";
+  display: block;
+  width: 1000px;
+  height: 3px;
+  margin-top: 15px;
+  background: #450909;
+}
+
+/*----------------Titulos de la página----------------*/
+.eslogan{
+  color: beige;
+  font-family: "Great Vibes", cursive;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+.titulos-cajas {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  margin: 10px /*top*/ 10px /*right*/ 0 /*bottom*/ 10px /*left*/;
+}
+
+.titulos{
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  margin: 10px /*top*/ 10px /*right*/ 0 /*bottom*/ 50px /*left*/;
+}
+
+.subtitulos {
+  font-family: "Poppins", serif;
+  font-size: 15px;
+  justify-content: center;
   color: #000000;
   text-align: left;
-  max-width: 900px;
-  margin: 500px auto 250px auto; /* 250px de separación abajo para que se note el scroll entre textos */
+  max-width: 1500px;
+  margin: 0 /*top*/ 10px /*right*/ 0px /*bottom*/ 0px /*left*/;
+  /* 250px de separación abajo para que se note el scroll entre textos */
+}
+
+/*----------------Info de la página----------------*/
+
+.Info {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  justify-content: center;
+  color: #000000;
+  text-align: left;
+  max-width: 1500px;
+  margin: 80px auto 50px auto;
+  /* 250px de separación abajo para que se note el scroll entre textos */
   line-height: 1.4;
 }
 
+
 /* Un margen inferior extra al último elemento para que el usuario pueda scrollear libremente al final */
 .Info-last {
-  margin-bottom: 150px;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: #2d0d36;
+/*--------------------------Cajas-------------------------*/
+.Box {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 120px;
+  padding: 80px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 15px 30px rgb(91, 86, 86);
+  transition: all .55s ease;
 }
+
+.Box:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
 
 /*----------------medias----------------*/
 @media (prefers-reduced-motion: no-preference) {
@@ -69,22 +160,25 @@
 }
 
 /*----------------KeyFrames----------------*/
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:scale(.7);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes pulse {
   from {
     transform: scale(1);
   }
+
   to {
-    transform: scale(1.1); /* Reducido ligeramente de 1.3 para que el pulso sea más sutil y elegante */
+    transform: scale(1.1);
+    /* Reducido ligeramente de 1.3 para que el pulso sea más sutil y elegante */
   }
 }
