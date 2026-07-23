@@ -60,8 +60,8 @@ export const Navbar = () => {
             </div>
             <ul className="nav-links">
                 <li><a href="#Sobre Nosotros" onClick={(e) => scrollToSection(e, 'Sobre-Nosotros')}>Sobre Nosotros</a></li>
-                <li><a href="#Servicios" onClick={(e) => scrollToSection(e, 'Instalaciones')}>Instalaciones</a></li>
-                <li><a href="#Contacto">Contacto</a></li>
+                <li><a href="#Instalaciones" onClick={(e) => scrollToSection(e, 'Instalaciones')}>Instalaciones</a></li>
+                <li><a href="#Servicios" onClick={(e) => scrollToSection(e, 'Servicios')}>Servicios</a></li>
             </ul>
         </nav>
     );

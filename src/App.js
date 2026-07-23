@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import logo_Salud_y_Belleza_Blanco from './logo_salud_y_belleza_blanco.png';
 import { Info } from './components/Info';
 import { Gallery } from './components/Gallery';
+import {Services} from './components/Services';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       </div>
       {/* Primera sección de texto */}
       <section className="Info" id="Sobre-Nosotros">
-        <Info direction='right' delay={0.1}>
+        <Info direction='up' delay={0.5}>
           <div className="Box">
             <h1 className="titulos-cajas"> ✨¿QUIÉNES SOMOS?✨ </h1>
             <div className="linea"> </div>
@@ -44,18 +45,45 @@ function App() {
         </Info>
       </section>
       {/* Segunda sección de texto con margen extra para permitir scroll */}
-      <section className="titulos" id="Instalaciones">
-        <Info direction='right' delay={0.1}>
-          NUESTRAS INSTALACIONES
-          <p className="subtitulos">
-            Contamos con un equipamiento completo y profesional para llevar a cabo nuestros servicios
-          </p>
+      <section>
+        <Info direction='right' delay={0.3}>
+          <div className="titulos" id="Instalaciones">
+            NUESTRAS INSTALACIONES
+            <p className="subtitulos">
+              Contamos con un equipamiento completo y profesional para llevar a cabo nuestros servicios
+            </p>
+          </div>
           <div className="sublinea"> </div>
         </Info>
       </section>
       <section>
-        <Info direction='up' delay={0.1}>
+        <Info direction='up' delay={0.3}>
           <Gallery />
+        </Info>
+      </section>
+      <section className="ubiacion">
+        <Info direction='down' delay={0.1}>
+          <p>
+            Encuentranos en:
+            <br></br>
+            📍 C. Hidalgo 52, San Sebastianito, 45601 San Pedro Tlaquepaque, Jal. 📍
+          </p>
+        </Info>
+      </section>
+      <section>
+        <Info direction='right' delay={0.3}>
+          <div className="titulos" id="Servicios">
+            SERVICIOS
+            <p className="subtitulos">
+              Escoge cualquiera de nuestros servicios para agendar una cita ahora mismo
+            </p>
+          </div>
+          <div className="sublinea"> </div>
+        </Info>
+      </section>
+      <section id="Servicios">
+        <Info direction='up' delay={0.3}>
+          <Services />
         </Info>
       </section>
       <Navbar />
