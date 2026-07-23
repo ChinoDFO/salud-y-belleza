@@ -15,7 +15,7 @@ function App() {
             <img src={logo_Salud_y_Belleza_Blanco} className="App-logo2" alt="logo" />
             <div className="eslogan">
               <p>
-                Tu Salud Es Nuestra Prioridad
+                Tu Salud & Belleza Es Nuestra Prioridad
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ function App() {
           <p>
             Encuentranos en:
             <br></br>
-            📍 C. Hidalgo 52, San Sebastianito, 45601 San Pedro Tlaquepaque, Jal. 📍
+            📍 C. Hidalgo 50, San Sebastianito, 45601 San Pedro Tlaquepaque, Jal. 📍
           </p>
         </Info>
       </section>
