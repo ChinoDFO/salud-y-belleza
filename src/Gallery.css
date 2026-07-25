@@ -154,7 +154,7 @@
 /* Efecto hover/focus al pasar el cursor */
 .tarjeta-btn:hover {
   transform: translateY(-6px);
-  border-color: #450909; /* Color de realce al pasar el mouse */
+  border-color: #ce1010; /* Color de realce al pasar el mouse */
   box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.15);
 }
 
