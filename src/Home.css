@@ -9,6 +9,11 @@
   border-radius: 5%;
   /* Espaciado interno para que el contenido no pegue arriba ni abajo de la pantalla */
 }
+.Home {
+  text-align: center;
+  border-radius: 5%;
+  /* Espaciado interno para que el contenido no pegue arriba ni abajo de la pantalla */
+}
 
 /*----------------Clases Logo----------------*/
 

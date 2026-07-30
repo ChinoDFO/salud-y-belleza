@@ -1,11 +1,8 @@
-// src/firebase.js
-// Import the functions you need from the SDKs you need
+// src/firebase/config.js (o src/firebase.js)
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCW8zuvK8ulj9t-STKiPnLvtpJT8S2UEbI",
   authDomain: "salud-y-belleza-1babc.firebaseapp.com",
@@ -16,9 +13,11 @@ const firebaseConfig = {
   measurementId: "G-T0CW3GDVCV"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// 1. Inicializamos y exportamos 'app' en una sola línea
+export const app = initializeApp(firebaseConfig);
 
-// Exportar la instancia de Firestore para usarla en tus componentes
+// 2. Inicializamos Analytics (si lo estás usando)
+export const analytics = getAnalytics(app);
+
+// 3. Inicializamos y exportamos 'db'
 export const db = getFirestore(app);

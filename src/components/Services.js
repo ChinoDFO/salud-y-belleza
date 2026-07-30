@@ -18,64 +18,76 @@ export const Services = () => {
         correo: '',
         telefono: '',
         fecha: '',
+        servicio: 'Limpieza Facial',
         hora: '',
         notas: ''
     });
 
-    // Efecto que reacciona cada vez que cambia la fecha
+    // Función para seleccionar la tarjeta y sincronizar el servicio en formData
+    const seleccionarServicio = (nombreServicio) => {
+        setOpcionSelecionada(nombreServicio);
+        setFormData((prev) => ({
+            ...prev,
+            servicio: nombreServicio,
+            fecha: '', // Reseteamos fecha y hora al cambiar de servicio
+            hora: ''
+        }));
+    };
+
+    // Efecto que reacciona cada vez que cambia la fecha o el servicio
     useEffect(() => {
         const cargarHorarios = async () => {
-            if (!formData.fecha) {
+            if (formData.fecha && formData.servicio) {
+                setCargandoHorarios(true);
+                try {
+                    const horasLibres = await obtenerHorariosDisponibles(
+                        formData.fecha,
+                        formData.servicio
+                    );
+                    setHorariosDisponibles(horasLibres);
+                } catch (error) {
+                    console.error('Error cargando horarios:', error);
+                } finally {
+                    setCargandoHorarios(false);
+                }
+            } else {
                 setHorariosDisponibles([]);
-                return;
-            }
-
-            setCargandoHorarios(true);
-            try {
-                const libres = await obtenerHorariosDisponibles(formData.fecha);
-                setHorariosDisponibles(libres);
-
-                // Resetear la hora seleccionada si la fecha cambia
-                setFormData((prev) => ({ ...prev, hora: '' }));
-            } catch (error) {
-                console.error('Error cargando horarios:', error);
-            } finally {
-                setCargandoHorarios(false);
             }
         };
 
         cargarHorarios();
-    }, [formData.fecha]);
+    }, [formData.fecha, formData.servicio]);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const obtenerFechaMinima = () => {
+        const hoy = new Date();
+        hoy.setDate(hoy.getDate() + 1); // Suma 1 día
+        return hoy.toISOString().split('T')[0];
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.hora) {
-            alert('Por favor selecciona una hora disponible.');
-            return;
-        }
-
         setCargando(true);
-
         try {
-            await agendarCita({
-                ...formData,
-                servicio: opcionSeleccionada
+            await agendarCita(formData);
+            alert('¡Cita agendada con éxito!');
+
+            // Reiniciamos el estado
+            setFormData({
+                nombre: '',
+                correo: '',
+                telefono: '',
+                fecha: '',
+                servicio: 'Limpieza Facial',
+                hora: '',
+                notas: ''
             });
-
-            alert(`¡Cita para ${opcionSeleccionada} agendada con éxito!`);
-
-            setFormData({ nombre: '', correo: '', telefono: '', fecha: '', hora: '', notas: '' });
             setOpcionSelecionada(null);
         } catch (error) {
-            alert('Ocurrió un error al agendar la cita. Inténtalo de nuevo.');
+            alert('Error al agendar la cita');
         } finally {
             setCargando(false);
         }
@@ -139,8 +151,7 @@ export const Services = () => {
                                     type="date"
                                     id="fecha"
                                     name="fecha"
-                                    // Opcional: Evitar fechas pasadas deshabilitándolas en el calendario
-                                    min={new Date().toISOString().split('T')[0]}
+                                    min={obtenerFechaMinima()}
                                     value={formData.fecha}
                                     onChange={handleChange}
                                     required
@@ -187,7 +198,11 @@ export const Services = () => {
                             />
                         </div>
 
-                        <button type="submit" className="btn-confirmar" disabled={cargando || cargandoHorarios}>
+                        <button
+                            type="submit"
+                            className="btn-confirmar"
+                            disabled={cargando || cargandoHorarios}
+                        >
                             {cargando ? 'Guardando cita...' : 'Confirmar Cita'}
                         </button>
                     </form>
@@ -202,7 +217,7 @@ export const Services = () => {
             <div className="tarjetas-grid">
                 <button
                     className="tarjeta-btn"
-                    onClick={() => setOpcionSelecionada('Limpieza Facial')}
+                    onClick={() => seleccionarServicio('Limpieza Facial')}
                 >
                     <img src={Limpieza} alt="Limpieza Facial" className="tarjeta-imagen" />
                     <span className="tarjeta-titulo">Limpieza facial</span>
@@ -210,7 +225,7 @@ export const Services = () => {
 
                 <button
                     className="tarjeta-btn"
-                    onClick={() => setOpcionSelecionada('Podología')}
+                    onClick={() => seleccionarServicio('Podología')}
                 >
                     <img src={Podologia} alt="Podología" className="tarjeta-imagen" />
                     <span className="tarjeta-titulo">Podología</span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // Importa el CSS con estilos globales o los de tu Navbar
-import '../App.css';
+import '../Home.css';
 import logo_Salud_y_Belleza_Blanco from '../logo_salud_y_belleza_blanco.png';
 
 export const Navbar = () => {
