@@ -4,6 +4,13 @@ import Limpieza from '../assets/limpieza-facial.png';
 import Podologia from '../assets/podología.jpg';
 import { Info } from '../components/Info';
 import { agendarCita, obtenerHorariosDisponibles } from '../services/citasService';
+import '../Formulario.css';
+import emailjs from '@emailjs/browser';
+
+const CORREOS_ADMIN = {
+    'Limpieza Facial': 'syblfccontacto@gmail.com',
+    'Podología': 'dfo.floresortiz@gmail.com',
+};
 
 export const Services = () => {
     const [opcionSeleccionada, setOpcionSelecionada] = useState(null);
@@ -23,6 +30,8 @@ export const Services = () => {
         notas: ''
     });
 
+
+
     // Función para seleccionar la tarjeta y sincronizar el servicio en formData
     const seleccionarServicio = (nombreServicio) => {
         setOpcionSelecionada(nombreServicio);
@@ -32,6 +41,33 @@ export const Services = () => {
             fecha: '', // Reseteamos fecha y hora al cambiar de servicio
             hora: ''
         }));
+    };
+
+    const enviarNotificacionEmail = async (datosCita) => {
+        // Determinamos el correo de la administradora según el servicio elegido
+        const correoDestinoAdmin = CORREOS_ADMIN[datosCita.servicio];
+
+        const templateParams = {
+            email_admin: correoDestinoAdmin,
+            nombre_cliente: datosCita.nombre,
+            correo: datosCita.correo,
+            telefono_cliente: datosCita.telefono,
+            servicio: datosCita.servicio,
+            fecha: datosCita.fecha,
+            hora: datosCita.hora,
+        };
+
+        try {
+            const response = await emailjs.send(
+                'service_co66tyq',     // Reemplaza con tu Service ID
+                'template_ffpjc1p',    // Reemplaza con tu Template ID
+                templateParams,
+                'dc_IO57GU2LaUKbkd'      // Reemplaza con tu Public Key
+            );
+            console.log('Correo enviado con éxito:', response.status, response.text);
+        } catch (error) {
+            console.error('Error al enviar el correo:', error);
+        }
     };
 
     // Efecto que reacciona cada vez que cambia la fecha o el servicio
@@ -63,9 +99,14 @@ export const Services = () => {
     };
 
     const obtenerFechaMinima = () => {
-        const hoy = new Date();
-        hoy.setDate(hoy.getDate() + 1); // Suma 1 día
-        return hoy.toISOString().split('T')[0];
+        const manana = new Date();
+        manana.setDate(manana.getDate() + 1);
+
+        const year = manana.getFullYear();
+        const month = String(manana.getMonth() + 1).padStart(2, '0');
+        const day = String(manana.getDate()).padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
     };
 
     const handleSubmit = async (e) => {
@@ -73,7 +114,9 @@ export const Services = () => {
         setCargando(true);
         try {
             await agendarCita(formData);
-            alert('¡Cita agendada con éxito!');
+            await enviarNotificacionEmail(formData);
+
+            alert('¡Cita agendada y notificación enviada con éxito!');
 
             // Reiniciamos el estado
             setFormData({
@@ -87,6 +130,7 @@ export const Services = () => {
             });
             setOpcionSelecionada(null);
         } catch (error) {
+            console.error('Error en el proceso de agendamiento:', error);
             alert('Error al agendar la cita');
         } finally {
             setCargando(false);
@@ -222,7 +266,6 @@ export const Services = () => {
                     <img src={Limpieza} alt="Limpieza Facial" className="tarjeta-imagen" />
                     <span className="tarjeta-titulo">Limpieza facial</span>
                 </button>
-
                 <button
                     className="tarjeta-btn"
                     onClick={() => seleccionarServicio('Podología')}
@@ -231,6 +274,15 @@ export const Services = () => {
                     <span className="tarjeta-titulo">Podología</span>
                 </button>
             </div>
+            <div className="tarjetas-grid">
+                <h4>Atendemos de lunes a jueves</h4>
+                <h4>Atendemos toda la semana</h4>
+            </div>
         </div>
+
     );
+
+
+
 };
+

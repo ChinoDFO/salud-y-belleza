@@ -17,7 +17,7 @@ export const obtenerHorariosDisponibles = async (fechaSeleccionada, servicioSele
     const q = query(
         collection(db, 'horariosOcupados'),
         where('fecha', '==', fechaSeleccionada),
-        where('servicio', '==', servicioSeleccionado) // 👈 Solo bloquea las de ESTE servicio
+        where('servicio', '==', servicioSeleccionado) // Solo bloquea las de ESTE servicio
     );
 
     const querySnapshot = await getDocs(q);

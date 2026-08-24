@@ -176,35 +176,3 @@
   font-weight: 600;
   color: #1e293b;
 }
-
-/* Estilos de la página de formulario en blanco */
-.pagina-formulario-container {
-  font-family: "Poppins", sans-serif;
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.btn-regresar {
-  background: transparent;
-  border: none;
-  color: #14181d;
-  font-weight: 600;
-  cursor: pointer;
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-
-.formulario-blanco {
-  min-height: 300px;
-  border: 2px dashed #cbd5e1;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #64748b;
-  margin-top: 20px;
-}
