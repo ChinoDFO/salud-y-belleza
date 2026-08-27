@@ -9,8 +9,8 @@
 .formulario-blanco {
     width: 100%;
     max-width: 450px;
-    background: #f4f1f1;
-    border: 1px solid #eef0f2;
+    background: #f9f7f7;
+    border: 1px solid #1a1d29;
     border-radius: 4px;
     padding: 50px 45px;
     box-shadow:
@@ -55,6 +55,7 @@
     border-radius: 3px;
     border: 1px solid #e2e4e8;
     background: #fbfbfc;
+    border: 1px solid #1a1d29;
     color: #1a1d29;
     font-size: 14px;
     font-family: inherit;
