@@ -1,0 +1,408 @@
+/* ================================
+   PANEL DE ADMINISTRACIÓN — ESTILO ELEGANTE
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.admin-login-container,
+.admin-dashboard-container {
+    font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+    box-sizing: border-box;
+}
+
+/* ================================
+   LOGIN
+================================ */
+
+.admin-login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 90px auto;
+    padding: 45px 40px;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+    border: 1px solid #eef0f2;
+}
+
+.admin-login-container h2 {
+    margin: 0 0 8px;
+    text-align: center;
+    color: #1a1d29;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.admin-login-container h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #b8935f;
+    margin: 16px auto 0;
+}
+
+.admin-login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.admin-login-container input {
+    width: 100%;
+    padding: 13px 16px;
+    box-sizing: border-box;
+
+    border: 1px solid #e2e4e8;
+    border-radius: 3px;
+
+    font-size: 14px;
+    color: #1a1d29;
+
+    outline: none;
+    transition: all 0.2s ease;
+    background: #fbfbfc;
+}
+
+.admin-login-container input:focus {
+    border-color: #b8935f;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.1);
+}
+
+.admin-login-container input::placeholder {
+    color: #a3a7b0;
+}
+
+.admin-login-container button {
+    margin-top: 8px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 3px;
+
+    background: #1a1d29;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.admin-login-container button:hover {
+    background: #b8935f;
+    box-shadow: 0 8px 20px rgba(184, 147, 95, 0.25);
+}
+
+.admin-login-container button:active {
+    transform: scale(0.99);
+}
+
+.admin-login-container button:disabled {
+    background: #c4c7cd;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.admin-login-container .error-message {
+    margin: 0;
+    padding: 12px 14px;
+
+    background: #fdf3f2;
+    color: #b3413a;
+
+    border: 1px solid #f5d9d6;
+    border-left: 3px solid #b3413a;
+    border-radius: 3px;
+
+    font-size: 13px;
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+.admin-dashboard-container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 40px 45px;
+
+    background: #ffffff;
+    border-radius: 4px;
+
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+    border: 1px solid #eef0f2;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.admin-dashboard-container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+
+    border-bottom: 1px solid #eef0f2;
+}
+
+.admin-dashboard-container header h2 {
+    margin: 0 0 6px;
+
+    color: #1a1d29;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.admin-dashboard-container header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.admin-dashboard-container header strong {
+    color: #b8935f;
+    font-weight: 600;
+}
+
+/* ================================
+   BOTÓN CERRAR SESIÓN
+================================ */
+
+.logout-button {
+    padding: 11px 20px;
+
+    background: transparent;
+    color: #1a1d29;
+
+    border: 1px solid #d6d9de;
+    border-radius: 3px;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #1a1d29;
+    color: #ffffff;
+    border-color: #1a1d29;
+}
+
+/* ================================
+   TÍTULO CITAS
+================================ */
+
+.admin-dashboard-container h3 {
+    margin: 0 0 20px;
+
+    color: #1a1d29;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+
+/* ================================
+   TABLA
+================================ */
+
+.admin-table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    border-radius: 4px;
+    border: 1px solid #eef0f2;
+}
+
+.admin-dashboard-container table {
+    width: 100%;
+    min-width: 850px;
+
+    border-collapse: collapse;
+    background: white;
+}
+
+.admin-dashboard-container thead {
+    background: #fafafb;
+}
+
+.admin-dashboard-container th {
+    padding: 16px 14px;
+
+    text-align: left;
+
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    border-bottom: 1px solid #eef0f2;
+}
+
+.admin-dashboard-container td {
+    padding: 16px 14px;
+
+    color: #333846;
+    font-size: 14px;
+
+    border-bottom: 1px solid #f2f3f5;
+}
+
+.admin-dashboard-container tbody tr {
+    transition: background 0.15s ease;
+}
+
+.admin-dashboard-container tbody tr:hover {
+    background: #fafaf8;
+}
+
+.admin-dashboard-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ================================
+   ESTADOS
+================================ */
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 12px;
+
+    border-radius: 2px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.estado-pendiente {
+    background: #fbf3e6;
+    color: #9c6f16;
+}
+
+.estado-caducado {
+    background: #fdf1f0;
+    color: #b3413a;
+}
+
+.estado-cancelada {
+    background: #f2f3f5;
+    color: #545966;
+}
+
+.estado-completada {
+    background: #eff6f0;
+    color: #2f7a45;
+}
+
+
+/* ================================
+   BOTÓN ELIMINAR
+================================ */
+
+.delete-button {
+    padding: 8px 14px;
+
+    border: 1px solid #f0d5d3;
+    border-radius: 3px;
+
+    background: transparent;
+    color: #b3413a;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+    background: #b3413a;
+    color: #ffffff;
+    border-color: #b3413a;
+}
+
+.delete-button:active {
+    transform: scale(0.98);
+}
+
+
+/* ================================
+   SIN CITAS
+================================ */
+
+.no-citas {
+    padding: 40px;
+
+    text-align: center;
+
+    color: #9ca3af;
+    background: #fafafb;
+
+    border: 1px dashed #e2e4e8;
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .admin-dashboard-container {
+        width: 100%;
+        margin: 0;
+        padding: 24px 20px;
+
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .admin-dashboard-container header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .logout-button {
+        width: 100%;
+    }
+
+    .admin-dashboard-container header h2 {
+        font-size: 21px;
+    }
+
+    .admin-login-container {
+        width: calc(100% - 30px);
+        margin: 40px auto;
+        padding: 30px 25px;
+    }
+}

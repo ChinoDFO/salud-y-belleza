@@ -1,31 +1,50 @@
 import { db } from '../firebase/config';
 import { collection, doc, runTransaction, serverTimestamp, getDoc, query, where, getDocs, deleteDoc } from 'firebase/firestore';
 
-export const obtenerHorariosDisponibles = async (fechaSeleccionada, servicioSeleccionado) => {
-    if (!fechaSeleccionada || !servicioSeleccionado) return [];
 
+export const obtenerHorariosDisponibles = async (fechaSeleccionada, servicio) => {
+  if (!fechaSeleccionada || !servicio) return [];
+
+  try {
+    // 1. Obtener el día de la semana en español
     const fechaObj = new Date(`${fechaSeleccionada}T00:00:00`);
     const diasSemana = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
     const nombreDia = diasSemana[fechaObj.getDay()];
 
-    const docConfig = await getDoc(doc(db, 'configuracion', 'horarioBase'));
-
-    const horariosDelDia = docConfig.data()?.[nombreDia] || [];
-    if (horariosDelDia.length === 0) return [];
-
-    // 🔴 FILTRAMOS POR FECHA Y POR SERVICIO
-    const q = query(
-        collection(db, 'horariosOcupados'),
-        where('fecha', '==', fechaSeleccionada),
-        where('servicio', '==', servicioSeleccionado) // Solo bloquea las de ESTE servicio
+    // 2. Buscar en Firestore a la administradora del servicio
+    const qAdmin = query(
+      collection(db, 'administradoras'),
+      where('servicio', '==', servicio)
     );
+    const adminSnap = await getDocs(qAdmin);
 
-    const querySnapshot = await getDocs(q);
-    const horasOcupadas = querySnapshot.docs.map((doc) => doc.data().hora);
+    if (adminSnap.empty) return [];
 
-    return horariosDelDia.filter((hora) => !horasOcupadas.includes(hora));
+    const adminData = adminSnap.docs[0].data();
+    
+    // Extraer horarios (asegurándonos de que sea un array)
+    const horariosDelDia = adminData.horarios?.[nombreDia];
+
+    if (!Array.isArray(horariosDelDia) || horariosDelDia.length === 0) {
+      return []; // Si es un string o está vacío, no hay servicio ese día
+    }
+
+    // 3. Consultar las horas ya ocupadas en horariosOcupados
+    const qOcupados = query(
+      collection(db, 'horariosOcupados'),
+      where('fecha', '==', fechaSeleccionada),
+      where('servicio', '==', servicio)
+    );
+    const ocupadosSnap = await getDocs(qOcupados);
+    const horasOcupadas = ocupadosSnap.docs.map((doc) => doc.data().hora);
+
+    // 4. Retornar solo los horarios libres
+    return horariosDelDia.filter((hora) => hora !== "" && !horasOcupadas.includes(hora));
+  } catch (error) {
+    console.error("Error al obtener horarios disponibles:", error);
+    return [];
+  }
 };
-
 
 
 export const agendarCita = async (datosCita) => {

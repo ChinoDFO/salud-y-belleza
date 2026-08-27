@@ -9,27 +9,39 @@
 .formulario-blanco {
     width: 100%;
     max-width: 450px;
-    background: #461111;
-    border: 1px solid rgba(212, 175, 55, .35);
-    border-radius: 22px;
-    padding: 50px;
+    background: #f4f1f1;
+    border: 1px solid #eef0f2;
+    border-radius: 4px;
+    padding: 50px 45px;
     box-shadow:
-        0 15px 40px rgba(155, 149, 149, 0.45);
-    backdrop-filter: blur(12px);
-    color: white;
+        0 20px 60px rgba(15, 23, 42, 0.08),
+        0 2px 8px rgba(15, 23, 42, 0.04);
+    color: #1a1d29;
 }
 
 .formulario-blanco h2 {
     text-align: center;
-    margin-bottom: 35px;
-    color: #D4AF37;
-    letter-spacing: 2px;
+    margin: 0 0 35px;
+    color: #0f1015;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.formulario-blanco h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #b8935f;
+    margin: 16px auto 0;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #d8d8d8;
+    color: #222327;
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -37,31 +49,39 @@
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 14px 0px;
+    padding: 13px 16px;
     margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #444;
-    background: #fffafa;
-    color: rgb(8, 7, 7);
-    font-size: 16px;
-    transition: .25s;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid #e2e4e8;
+    background: #fbfbfc;
+    color: #1a1d29;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #D4AF37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, .45);
+    border-color: #b8935f;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(184, 147, 95, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a3a7b0;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 200px;
+    gap: 20px;
 }
 
-@media(max-width:700px) {
+@media (max-width: 700px) {
     .form-row {
         grid-template-columns: 1fr;
     }
@@ -69,37 +89,54 @@
 
 .btn-confirmar {
     width: 100%;
-    padding: 16px;
-    margin-top: 15px;
+    padding: 14px;
+    margin-top: 8px;
     border: none;
-    border-radius: 12px;
+    border-radius: 3px;
     cursor: pointer;
-    background: linear-gradient(135deg, #D4AF37, #F8E08E);
-    color: black;
-    font-weight: bold;
-    font-size: 17px;
-    transition: .3s;
+    background: #1a1d29;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
 }
 
 .btn-confirmar:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(181, 34, 34, 0.35);
+    background: #6b4c20;
+    box-shadow: 0 8px 20px rgba(184, 147, 95, 0.25);
+}
+
+.btn-confirmar:disabled {
+    background: #c4c7cd;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 .btn-regresar {
     margin-bottom: 30px;
     padding: 10px 18px;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #d6d9de;
+    border-radius: 3px;
     cursor: pointer;
-    background: #222;
-    color: white;
-    transition: .25s;
+    background: transparent;
+    color: #1a1d29;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 .btn-regresar:hover {
-    background: #450909;
-    color: rgb(249, 247, 247);
+    background: #1a1d29;
+    color: #ffffff;
+    border-color: #1a1d29;
+}
+
+.btn-regresar:disabled {
+    color: #c4c7cd;
+    border-color: #eef0f2;
+    cursor: not-allowed;
 }
 
 textarea {

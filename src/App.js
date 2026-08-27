@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/tlS&B$_67PadAdm3011/admin/" element={<AdminPanel />} />
       </Routes>
     </BrowserRouter>
   );

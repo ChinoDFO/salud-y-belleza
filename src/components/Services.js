@@ -9,7 +9,7 @@ import emailjs from '@emailjs/browser';
 
 const CORREOS_ADMIN = {
     'Limpieza Facial': 'syblfccontacto@gmail.com',
-    'Podología': 'dfo.floresortiz@gmail.com',
+    'Podología': 'saludybcontacto@gmail.com',
 };
 
 export const Services = () => {
@@ -214,7 +214,7 @@ export const Services = () => {
                                 >
                                     <option value="">
                                         {!formData.fecha
-                                            ? '-- Selecciona primero una fecha --'
+                                            ? '-- Selecciona una fecha --'
                                             : cargandoHorarios
                                                 ? 'Cargando horas...'
                                                 : horariosDisponibles.length === 0
@@ -229,17 +229,6 @@ export const Services = () => {
                                     ))}
                                 </select>
                             </div>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="notas">Notas adicionales:</label>
-                            <textarea
-                                id="notas"
-                                name="notas"
-                                rows="3"
-                                value={formData.notas}
-                                onChange={handleChange}
-                            />
                         </div>
 
                         <button
